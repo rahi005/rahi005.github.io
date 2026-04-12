@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rahi Abrar | PhD Researcher · Virginia Tech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;700&family=Orbitron:wght@400;700&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --surface: #111820;
+      --surface2: #162030;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8e4dc;
+      --muted: #7a8a99;
+      --accent: #4ec9b0;
+      --accent2: #e07b39;
+      --accent3: #a78bfa;
+      --serif: 'DM Serif Display', Georgia, serif;
+      --mono: 'DM Mono', monospace;
+      --sans: 'Lato', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(11,15,20,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      color: var(--accent);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Oxanium', sans-serif;
+      font-size: 1.2rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      align-items: center;
+      padding: 8rem 6rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        -8deg,
+        transparent,
+        transparent 60px,
+        rgba(78,201,176,0.03) 60px,
+        rgba(78,201,176,0.03) 61px
+      );
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+    }
+    .blob-1 {
+      width: 500px; height: 500px;
+      background: rgba(78,201,176,0.08);
+      top: -100px; right: -80px;
+    }
+    .blob-2 {
+      width: 350px; height: 350px;
+      background: rgba(224,123,57,0.07);
+      bottom: 0; left: 10%;
+    }
+
+    .hero-text { position: relative; z-index: 2; }
+
+    .hero-tag {
+      font-family: 'Oxanium', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, #f4a261, #e07b39, #ffd6a5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-top: -1.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: 0.6rem;
+    }
+    .hero-tag::before {
+      content: '';
+      display: inline-block; width: 30px; height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 5.5vw, 5.5rem);
+      line-height: 1.08;
+      margin-bottom: 0.3rem;
+      letter-spacing: -0.01em;
+    }
+    h1 .italic { font-style: italic; color: var(--accent2); }
+
+    /* CHANGE 2 & 3: Larger subtitle in Oxanium */
+    .hero-subtitle {
+      font-family: 'Oxanium', sans-serif;
+      font-size: 1.15rem;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin: 1.4rem 0 2.2rem;
+      font-weight: 400;
+    }
+    .hero-subtitle span { color: var(--text); }
+
+    /* CHANGE 4: Larger hero description */
+    .hero-desc {
+      max-width: 520px;
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+    .hero-desc strong { color: var(--text); font-weight: 400; }
+
+    .hero-ctas {
+      display: flex; gap: 1rem; margin-top: 2.5rem; flex-wrap: wrap;
+    }
+
+    /* CHANGE 5: Larger buttons in Oxanium */
+    .btn {
+      font-family: 'Oxanium', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+    }
+    .btn-primary:hover { background: #3db89f; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-visual {
+      position: relative; z-index: 2;
+      display: flex; justify-content: center; align-items: center;
+    }
+    .hex-diagram {
+      width: 360px; height: 360px;
+      position: relative;
+    }
+    .hex-diagram svg { width: 100%; height: 100%; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 6rem 6rem; }
+    .section-tag {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 3rem;
+    }
+
+    /* ── RESEARCH ── */
+    #research { background: var(--surface); }
+    .research-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .research-card {
+      background: var(--surface);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .research-card:hover { background: var(--surface2); }
+    .research-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+    }
+    .card-exp::before { background: var(--accent2); }
+    .card-sim::before { background: var(--accent3); }
+
+    .card-number {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      margin-bottom: 1.2rem;
+    }
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .research-card h3 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .research-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .card-tags {
+      display: flex; flex-wrap: wrap; gap: 0.4rem;
+      margin-top: 1.5rem;
+    }
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 1px;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .about-text p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.9;
+    }
+    .about-text p strong { color: var(--text); font-weight: 400; }
+
+    .about-meta { }
+    .meta-block {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 0;
+    }
+    .meta-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .meta-value {
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .meta-value a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); }
+    .meta-value a:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── SKILLS / METHODS ── */
+    #methods { background: var(--surface); }
+    .methods-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+    .method-cell {
+      background: var(--surface);
+      padding: 2rem;
+      transition: background 0.2s;
+    }
+    .method-cell:hover { background: var(--surface2); }
+    .method-icon {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .method-cell h4 {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+    }
+    .method-cell p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      text-align: center;
+      padding: 7rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+    #contact .blob-c {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: rgba(78,201,176,0.05);
+      border-radius: 50%;
+      filter: blur(100px);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    #contact > * { position: relative; z-index: 2; }
+    #contact h2 { margin-bottom: 1rem; }
+    #contact p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 480px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+    }
+    .contact-links {
+      display: flex; justify-content: center;
+      gap: 1rem; flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+    .footer-accent { color: var(--accent); }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.7s ease forwards;
+    }
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .d1 { animation-delay: 0.1s; }
+    .d2 { animation-delay: 0.25s; }
+    .d3 { animation-delay: 0.4s; }
+    .d4 { animation-delay: 0.55s; }
+    .d5 { animation-delay: 0.7s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      #hero { grid-template-columns: 1fr; padding: 7rem 2rem 4rem; }
+      .hero-visual { display: none; }
+      section { padding: 4rem 2rem; }
+      #about { grid-template-columns: 1fr; gap: 3rem; }
+      .research-grid { grid-template-columns: 1fr; }
+      .methods-grid { grid-template-columns: 1fr 1fr; }
+      footer { flex-direction: column; gap: 0.5rem; padding: 1.5rem 2rem; }
+    }
+    @media (max-width: 600px) {
+      .methods-grid { grid-template-columns: 1fr; }
+      #contact { padding: 5rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Rahi Abrar</div>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#methods">Methods</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="hero-text">
+    <div class="hero-tag fade-up d1">PhD Researcher · Geomechanics · Induced Seismicity</div>
+    <!-- CHANGE 1: Removed duplicate "Rahi Abrar" h1 — nav logo is the only instance -->
+    <h1 class="fade-up d2">Rahi<br><span class="italic">Abrar</span></h1>
+    <!-- CHANGE 2 & 3: Larger size, Oxanium font, all three terms highlighted -->
+    <p class="hero-subtitle fade-up d3">
+      <span>EMES Lab</span> &nbsp;·&nbsp; <span>Geosciences</span> &nbsp;·&nbsp; <span>Virginia Tech</span>
+    </p>
+    <!-- CHANGE 4: Larger font size -->
+    <p class="hero-desc fade-up d4">
+      Bridging <strong>microscale rock mechanics</strong> and <strong>field-scale geomechanics</strong>
+      to unlock the full potential of geothermal energy systems — through high-stress experiments
+      and advanced reservoir simulations.
+    </p>
+    <!-- CHANGE 5: Larger buttons in Oxanium -->
+    <div class="hero-ctas fade-up d5">
+      <a href="#research" class="btn btn-primary">View Research</a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-tag">Research Focus</div>
+  <h2>Two Pillars of Inquiry</h2>
+  <div class="research-grid">
+    <div class="research-card card-exp">
+      <div class="card-number">01 / Experimental</div>
+      <span class="card-icon">🪨</span>
+      <h3>High-Stress Rock Mechanics Experiments</h3>
+      <p>
+        Conducting state-of-the-art laboratory experiments under extreme pressure and temperature
+        conditions that simulate deep geothermal environments. These tests probe how rocks fracture,
+        deform, and transmit fluids at the microscale — generating ground-truth data that informs
+        reservoir-scale understanding.
+      </p>
+      <div class="card-tags">
+        <span class="tag">Triaxial Testing</span>
+        <span class="tag">Fracture Mechanics</span>
+        <span class="tag">High-P/T Conditions</span>
+        <span class="tag">Permeability</span>
+      </div>
+    </div>
+
+    <div class="research-card card-sim">
+      <div class="card-number">02 / Numerical</div>
+      <span class="card-icon">🌐</span>
+      <h3>Reservoir-Scale Flow Simulations</h3>
+      <p>
+        Developing and running high-fidelity numerical models of fluid flow behavior in geothermal
+        reservoirs. By coupling experimental observations with computational frameworks, the goal is
+        to reliably predict subsurface flow dynamics, heat extraction efficiency, and long-term
+        reservoir performance.
+      </p>
+      <div class="card-tags">
+        <span class="tag">Computational Geomechanics</span>
+        <span class="tag">Multiphase Flow</span>
+        <span class="tag">Reservoir Modeling</span>
+        <span class="tag">FEM / FVM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-text">
+    <div class="section-tag">About</div>
+    <h2>Background &amp;<br>Motivation</h2>
+    <p>
+      I am a PhD student at the <strong>Earth Mechanics and Physics for Energy Sustainability (EMES) Lab</strong>
+      at Virginia Tech's Department of Geosciences, where I joined in January 2025 under the
+      supervision of <strong>Professor Mateo Acosta</strong>.
+    </p>
+    <p>
+      My research sits at the intersection of experimental rock physics and computational geomechanics.
+      A central challenge in geothermal energy is the <strong>scale gap</strong> — the physics
+      governing fluid flow and deformation at the grain scale are vastly different from what we observe
+      at field scale. I work to close this gap.
+    </p>
+    <p>
+      By combining laboratory measurements with upscaled numerical models, I aim to build a more
+      complete physical picture of how geothermal reservoirs behave — ultimately supporting more
+      efficient and sustainable energy extraction from the Earth's heat.
+    </p>
+  </div>
+
+  <div class="about-meta">
+    <div class="section-tag" style="margin-bottom:1.5rem;">Details</div>
+
+    <div class="meta-block">
+      <div class="meta-label">Institution</div>
+      <div class="meta-value">Virginia Tech</div>
+    </div>
+    <div class="meta-block">
+      <div class="meta-label">Department</div>
+      <div class="meta-value">Department of Geosciences</div>
+    </div>
+    <div class="meta-block">
+      <div class="meta-label">Laboratory</div>
+      <div class="meta-value">EMES Lab — Earth Mechanics &amp; Physics for Energy Sustainability</div>
+    </div>
+    <div class="meta-block">
+      <div class="meta-label">Advisor</div>
+      <div class="meta-value">Professor Mateo Acosta</div>
+    </div>
+    <div class="meta-block">
+      <div class="meta-label">Started</div>
+      <div class="meta-value">January 2025</div>
+    </div>
+    <div class="meta-block">
+      <div class="meta-label">Location</div>
+      <div class="meta-value">Blacksburg, Virginia, USA</div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODS -->
+<section id="methods">
+  <div class="section-tag">Toolkit</div>
+  <h2>Methods &amp; Approaches</h2>
+  <div class="methods-grid">
+    <div class="method-cell">
+      <div class="method-icon">⚙️</div>
+      <h4>Rock Deformation Testing</h4>
+      <p>Triaxial and true-triaxial apparatus for probing failure envelopes and elastic properties under simulated in-situ conditions.</p>
+    </div>
+    <div class="method-cell">
+      <div class="method-icon">🔬</div>
+      <h4>Microstructural Analysis</h4>
+      <p>SEM, CT imaging, and microscopy to characterize pore networks, fracture geometry, and mineralogy at the grain scale.</p>
+    </div>
+    <div class="method-cell">
+      <div class="method-icon">💧</div>
+      <h4>Permeability Measurement</h4>
+      <p>Steady-state and transient flow experiments to quantify how stress and fractures control fluid transmissibility.</p>
+    </div>
+    <div class="method-cell">
+      <div class="method-icon">🖥️</div>
+      <h4>Numerical Simulation</h4>
+      <p>Finite element and finite volume models for coupled hydro-mechanical flow simulation at reservoir scale.</p>
+    </div>
+    <div class="method-cell">
+      <div class="method-icon">📐</div>
+      <h4>Upscaling Methods</h4>
+      <p>Translating micro- to macroscale properties using homogenization theory and representative volume element analysis.</p>
+    </div>
+    <div class="method-cell">
+      <div class="method-icon">🌋</div>
+      <h4>Geothermal Systems</h4>
+      <p>Application domain: enhanced geothermal systems (EGS), hydrothermal reservoirs, and deep heat extraction strategies.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="blob-c"></div>
+  <div class="section-tag">Contact</div>
+  <h2>Let's Connect</h2>
+  <p>
+    Interested in geothermal research, collaborations, or just want to talk rock mechanics?
+    Feel free to reach out.
+  </p>
+  <div class="contact-links">
+    <a href="mailto:rahi@vt.edu" class="btn btn-primary">rahi@vt.edu</a>
+    <a href="https://github.com/" class="btn btn-ghost" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/" class="btn btn-ghost" target="_blank">LinkedIn</a>
+    <a href="https://scholar.google.com/" class="btn btn-ghost" target="_blank">Google Scholar</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span class="footer-accent">Rahi Abrar</span> · EMES Lab, Virginia Tech</p>
+  <p>Built for <span class="footer-accent">GitHub Pages</span></p>
+</footer>
+
+<script>
+  window.onload = function() {
+    window.scrollTo(0, 0);
+  }
+</script>
+</body>
+</html>
