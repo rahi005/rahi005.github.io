@@ -26,6 +26,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { scroll-behavior: smooth; }
+    
 
     body {
       background: var(--bg);
@@ -630,5 +631,10 @@
   <p>Built for <span class="footer-accent">GitHub Pages</span></p>
 </footer>
 
+<script>
+  window.onload = function() {
+    window.scrollTo(0, 0);
+  }
+</script>
 </body>
 </html>
