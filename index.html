@@ -134,7 +134,19 @@
       z-index: 2;
       text-align: left; 
     }
-
+    .hero-image {
+      position: absolute;
+      right: 6rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 420px;
+      height: 480px;
+      object-fit: cover;
+      object-position: center top;
+      border: 1px solid var(--border);
+      z-index: 2;
+      filter: grayscale(20%);
+    }
     .hero-subtitle {
       font-family: 'Oxanium', sans-serif;
       font-size: 1.5rem;
@@ -435,6 +447,7 @@
 
   <!-- Everything else: left aligned -->
   <div class="hero-text">
+    <img class="hero-image" src="lab.jpg" alt="Rahi in the lab" />
     <p class="hero-subtitle fade-up d2">
       <span>EMES Lab</span> &nbsp;·&nbsp; <span>Geosciences</span> &nbsp;·&nbsp; <span>Virginia Tech</span>
     </p>
