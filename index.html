@@ -636,8 +636,8 @@
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       alpha: 0,
-      maxAlpha: 0.1 + Math.random() * 0.2,
-      size: 0.5 + Math.random() * 1.5,
+      maxAlpha: 0.4 + Math.random() * 0.5,
+      size: 1 + Math.random() * 3,
       phase: 'in',
       speed: 0.008 + Math.random() * 0.015
     });
@@ -650,16 +650,17 @@
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Slowly drifting gradient
-    gradX += (targetX - gradX) * 0.003;
-    gradY += (targetY - gradY) * 0.003;
+    gradX += (targetX - gradX) * 0.008;
+    gradY += (targetY - gradY) * 0.008;
     if (Math.abs(gradX - targetX) < 0.01) targetX = 0.2 + Math.random() * 0.6;
     if (Math.abs(gradY - targetY) < 0.01) targetY = 0.2 + Math.random() * 0.6;
 
     const gx = gradX * canvas.width;
     const gy = gradY * canvas.height;
     const grad = ctx.createRadialGradient(gx, gy, 0, gx, gy, canvas.width * 0.6);
-    grad.addColorStop(0, 'rgba(78,201,176,0.06)');
-    grad.addColorStop(0.5, 'rgba(167,139,250,0.03)');
+    grad.addColorStop(0, 'rgba(78,201,176,0.25)');
+    grad.addColorStop(0.4, 'rgba(167,139,250,0.15)');
+    grad.addColorStop(0.7, 'rgba(224,123,57,0.08)');
     grad.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
